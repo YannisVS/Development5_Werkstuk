@@ -1,0 +1,28 @@
+{
+  "name": "development5_werkstuk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jest": "^27.3.1",
+    "knex": "^0.95.14",
+    "pg": "^8.7.1",
+    "supertest": "^6.1.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YannisVS/Development5_Werkstuk.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YannisVS/Development5_Werkstuk/issues"
+  },
+  "homepage": "https://github.com/YannisVS/Development5_Werkstuk#readme"
+}
