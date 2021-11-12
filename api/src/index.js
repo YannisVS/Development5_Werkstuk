@@ -2,7 +2,6 @@
 // Express
 
 // const supertest = require('supertest');
-
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 5543;
@@ -23,26 +22,37 @@ const pg = require('knex')({
 
 bgRouter.route('/users')
     .get((req, res) => {
-        createPostgressData();
+        recievePostgressData().then((data) => {
+            console.log(data);
+            res.send("data recieved");
+        });
     })
  
 bgRouter.route('/updateUser/:id')
     .patch((req, res) => {
+        try {
+            updatePostgressData(req.params.id);
+            res.send("data updated")
+        } catch (error) {
+            res.send(error)
+        }
 });
 
 bgRouter.route('/deleteUser/:id')
     .delete((req, res) => {
+        try {
+            deletePostgressData(req.params.id);
+            res.send("data deleted")
+        } catch (error) {
+            res.send(error)
+        }
 });
-
 
 function startexpress() {
     app.use('/api', bgRouter);
 
     app.get('/', (req, res) => {
-        recievePostgressData().then((data) => {
-            console.log(data);
-            res.send("data recieved");
-        });
+        res.send("use /api to go further")
     });
 
     app.listen(port, () => {
@@ -84,23 +94,20 @@ async function recievePostgressData() {
 }
 
 // Update a row inside the users table
-async function updatePostgressData() {
-    return await pg.select('naam').from('users')
+async function updatePostgressData(id) {
+    return await pg.table('users').where('naam', '=', "test").update('naam', id)
 }
 
 // Delete a row inside the users table
 async function deletePostgressData() {
-    return await pg.select('naam').from('users')
+    return await pg.table('users').where('naam', '=', "test").del()
 }
-
-
 
 //exports variables to the test js file
 module.exports = {
     port,
     app
 }
-
 
 // gen_random_uuid()
 
