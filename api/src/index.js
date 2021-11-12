@@ -76,7 +76,7 @@ async function createTable() {
     await pg.schema.hasTable('users').then(function(exists) {
         if (!exists) {
           return pg.schema.createTable('users', function(t) {
-            // t.increments('id').primary();
+            t.increments('id').primary();
             t.string('naam', 100);
           });
         }
@@ -90,17 +90,17 @@ async function createPostgressData() {
 
 // Recieve data from the users table
 async function recievePostgressData() {
-    return await pg.select('naam').from('users')
+    return await pg.select('id', 'naam').from('users')
 }
 
 // Update a row inside the users table
 async function updatePostgressData(id) {
-    return await pg.table('users').where('naam', '=', "test").update('naam', id)
+    return await pg.table('users').where('id', '=', id).update('naam', "UpdatedTest")
 }
 
 // Delete a row inside the users table
-async function deletePostgressData() {
-    return await pg.table('users').where('naam', '=', "test").del()
+async function deletePostgressData(id) {
+    return await pg.table('users').where('id', '=', id).del()
 }
 
 //exports variables to the test js file
