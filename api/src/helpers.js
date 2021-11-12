@@ -13,6 +13,7 @@ const helpers = {
      * @param {object} body 
      * @returns {object} body if all is capitalised and shortened, or false if something missing
      */
+    
     bodyCheck(body) {
       if(body && body.title && body.imageURL && body.excerpt) {
         const { title, imageURL, excerpt} = body;
