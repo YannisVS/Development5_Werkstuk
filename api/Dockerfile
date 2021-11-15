@@ -9,4 +9,5 @@ EXPOSE 5543
 COPY . .
 
 CMD [ "npm","start" ]
+
 #CMD ["nodemon"]

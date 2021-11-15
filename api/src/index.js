@@ -4,19 +4,22 @@
 // const supertest = require('supertest');
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 5543;
+const port = process.env.APIPORT || 5543;
 const bgRouter = express.Router();
 
 // Makes connection with the postgress database in docker
+
+
 const pg = require('knex')({
 
     client: 'pg',
-
+    
     searchPath: ['knex', 'public'],
-
+    
     connection: process.env.PG_CONNECTION_STRING ? process.env.PG_CONNECTION_STRING : 'postgres://admin:admin@localhost:5432/users'
-
+    
 });
+
 
 // Middleware
 
@@ -62,6 +65,7 @@ function startexpress() {
 }
 async function initTables() {
     await createTable();
+    await createPostgressData();
     await createPostgressData();
 }
 

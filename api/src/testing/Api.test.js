@@ -1,7 +1,7 @@
 const { test, expect } = require("@jest/globals");
 const { help } = require("yargs");
-const helpers = require("./../helpers")
-const apiVariables = require("./../index")
+const helpers = require("../helpers");
+const apiVariables = require("../index");
 
 const apiroutes = require("../index.js");
 const request = require('supertest');
@@ -14,9 +14,22 @@ test("testing url", () => {
     expect(helpers.checkIfURL(`http://localhost:${apiVariables.port}`)).toBeFalsy();
 })
 
+it('tests if connection base is succesfull', async() => {
+    const response = await request(apiroutes.app).get('/');
+    expect(response.statusCode).toEqual(200);
+});
 
-it('tests if connection to endpoint is successful', async() => {
+it('tests if recieving data is succesfull', async() => {
     const response = await request(apiroutes.app).get('/api/users');
     expect(response.statusCode).toEqual(200);
-    expect(response.body.naam).toBe("poggy");
+});
+
+it('tests if deleting data is succesfull', async() => {
+    const response = await request(apiroutes.app).delete('/api//deleteUser/1');
+    expect(response.statusCode).toEqual(200);
+});
+
+it('tests if updating data is succesfull', async() => {
+    const response = await request(apiroutes.app).patch('/api/updateUser/2');
+    expect(response.statusCode).toEqual(200);
 });
