@@ -25,7 +25,7 @@ it('tests if recieving data is succesfull', async() => {
 });
 
 it('tests if deleting data is succesfull', async() => {
-    const response = await request(apiroutes.app).delete('/api//deleteUser/1');
+    const response = await request(apiroutes.app).delete('/api/deleteUser/1');
     expect(response.statusCode).toEqual(200);
 });
 
