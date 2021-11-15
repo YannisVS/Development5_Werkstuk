@@ -21,7 +21,7 @@ const pg = require('knex')({
 });
 
 
-// Middleware
+// This is Middleware
 
 bgRouter.route('/users')
     .get((req, res) => {
