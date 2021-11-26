@@ -10,10 +10,10 @@ on:
   pull_request:
     branches: [ master ]
   
-  env:
-    POSTGRES_USER: admin
-    POSTGRES_PASSWORD: admin
-    POSTGRES_DB: Users
+env:
+  POSTGRES_USER: admin
+  POSTGRES_PASSWORD: admin
+  POSTGRES_DB: Users
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
