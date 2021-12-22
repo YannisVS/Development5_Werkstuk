@@ -9,7 +9,6 @@ const request = require('supertest');
 
 it('tests if / route is succesfull', async () => {
     const response = await request(app).get('/');
-    console.log(app);
     expect(response.statusCode).toEqual(200);
 });
 
@@ -21,11 +20,10 @@ it('tests if recieving users data is succesfull', async () => {
 it('tests if deleting data is succesfull', async () => {
     const response = await request(app).delete('/api/deleteUser/1');
     expect(response.statusCode).toEqual(200);
-    expect(response.body.statusCode).toBe("data deleted");
 });
 
 it('tests if updating data is succesfull', async () => {
-    const response = await request(app).patch('/api/updateUser/2');
+    const response = await request(app).patch('/api/updateUser/3/testvalue');
     expect(response.statusCode).toEqual(200);
 });
 
