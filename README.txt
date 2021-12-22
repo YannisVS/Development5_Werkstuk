@@ -21,6 +21,10 @@ Routes:
 This route allows you to recieve all users from the postgress database
 http://localhost:5543/api/users
 
+1.2
+This route allows you to recieve all genders from the postgress database
+http://localhost:5543/api/genders
+
 2.1 Create user
 This route allows you to create a user in the postgress database.
 In the route the word "test" can be filled in with any name you would like to give you're user.
