@@ -23,10 +23,15 @@ http://localhost:5543/api/users
 
 2.1 Create user
 This route allows you to create a user in the postgress database.
-In the route the word "test" can be filled in with any name you would like to give youre user.
+In the route the word "test" can be filled in with any name you would like to give you're user.
 In the route the number "1" can be filled in with 1 or 2 depending on the gender of the user.
 1 being male, 2 being female
 http://localhost:5543/api/createUser/test/1
+
+2.2 Create Category
+This route allows you to create a gender in the postgress database.
+In the route the word "testgender" can be filled in with any name you would like to give the new gender.
+http://localhost:5543/api/createGender/testgender
 
 3.1 Update user
 This route allows you to update a user in the postgress database.
