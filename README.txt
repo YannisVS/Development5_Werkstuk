@@ -54,5 +54,10 @@ This route allows you to delete a user in the postgress database.
 In the route the number "3" can be filled in the id of the user you want to delete.
 http://localhost:5543/api/deleteUser/3
 
+4.2 Delete gender
+This route allows you to delete a gender in the postgress database.
+In the route the number "3" can be filled in the id of the gender you want to delete.
+http://localhost:5543/api/deleteGender/3
+
 
 
