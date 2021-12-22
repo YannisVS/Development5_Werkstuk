@@ -39,9 +39,15 @@ http://localhost:5543/api/createGender/testgender
 
 3.1 Update user
 This route allows you to update a user in the postgress database.
-In the route the number "4" can be filled in the id of the user you want to update.
-In the route the word "updateUser" can be filled in with any name you would like to update the users name to.
+In the route the number "4" can be filled in with the id of the user you want to update.
+In the route the word "UpdateValue" can be filled in with any name you would like to update the users name to.
 http://localhost:5543/api/updateUser/4/UpdateValue
+
+3.2 Update gender
+This route allows you to update a gender in the postgress database.
+In the route the number "2" can be filled in with the id of the gender you want to update.
+In the route the word "UpdateValue" can be filled in with any name you would like to update the genders name to.
+http://localhost:5543/api/updateGender/4/UpdateValue
 
 4.1 Delete user
 This route allows you to delete a user in the postgress database.
