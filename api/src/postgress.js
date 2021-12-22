@@ -32,9 +32,7 @@ bgRouter.route('/users')
 bgRouter.route('/genders')
     .get((req, res) => {
         recieveSexPostgressData().then((data) => {
-            console.log(data);
             res.send("data recieved");
-
         });
     })
 
@@ -77,7 +75,6 @@ bgRouter.route('/createGender/:genderNaam')
     });
 
 //---------------------------------------------------
-
 
 function startexpress() {
     app.use('/api', bgRouter);
