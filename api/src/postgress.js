@@ -25,9 +25,8 @@ const pg = require('knex')({
 bgRouter.route('/users')
     .get((req, res) => {
         recieveUsersPostgressData().then((data) => {
-            console.log(data);
+            res.send("data recieved");
         });
-        res.send("data recieved");
     })
 
 
@@ -38,12 +37,8 @@ bgRouter.route('/users')
 
 bgRouter.route('/updateUser/:id/:change')
     .patch((req, res) => {
-        try {
-            updatePostgressData(req.params.id, req.params.change);
-            res.send("data updated")
-        } catch (error) {
-            res.send(error)
-        }
+        updatePostgressData(req.params.id, req.params.change);
+        res.send("data updated")
     });
 
 //----------------------------------------------------
@@ -53,12 +48,8 @@ bgRouter.route('/updateUser/:id/:change')
 
 bgRouter.route('/deleteUser/:id')
     .delete((req, res) => {
-        try {
-            deletePostgressData(req.params.id);
-            res.send("data deleted")
-        } catch (error) {
-            res.send(error)
-        }
+        deletePostgressData(req.params.id);
+        res.send("data deleted")
     });
 
 //--------------------------------------------------
@@ -67,22 +58,14 @@ bgRouter.route('/deleteUser/:id')
 
 bgRouter.route('/createUser/:naam/:gender')
     .post((req, res) => {
-        try {
-            createPostgressData(req.params.naam, req.params.gender);
-            res.send("data added")
-        } catch (error) {
-            res.send(error)
-        }
+        createPostgressData(req.params.naam, req.params.gender);
+        res.send("data added")
     });
 
 bgRouter.route('/createGender/:genderNaam')
     .post((req, res) => {
-        try {
-            createSexTypesPostgressData(req.params.genderNaam);
-            res.send("data added")
-        } catch (error) {
-            res.send(error)
-        }
+        createSexTypesPostgressData(req.params.genderNaam);
+        res.send("data added")
     });
 
 //---------------------------------------------------
@@ -92,7 +75,7 @@ function startexpress() {
     app.use('/api', bgRouter);
 
     app.get('/', (req, res) => {
-        res.send("use /api to go further")
+        res.send("use /api to go further");
     });
 
 
@@ -116,7 +99,7 @@ async function createTables() {
             pg.schema
                 .createTable('sex_types', function (t) {
                     t.increments('genderId').primary();
-                    t.string('gender', 1);
+                    t.string('gender', 20);
                 })
                 .createTable('users', function (t) {
                     t.increments('id').primary();
