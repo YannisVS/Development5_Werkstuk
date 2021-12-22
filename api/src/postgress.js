@@ -43,9 +43,16 @@ bgRouter.route('/genders')
 
 bgRouter.route('/updateUser/:id/:change')
     .patch((req, res) => {
-        updatePostgressData(req.params.id, req.params.change);
+        updateUserPostgressData(req.params.id, req.params.change);
         res.send("data updated")
     });
+
+bgRouter.route('/updateGender/:id/:change')
+    .patch((req, res) => {
+        updateGenderPostgressData(req.params.id, req.params.change);
+        res.send("data updated")
+    });
+
 
 //----------------------------------------------------
 
@@ -166,8 +173,12 @@ async function recieveSexPostgressData() {
     return await pg.select('genderId', 'gender').from('sex_types')
 }
 // Update a row inside the users table
-async function updatePostgressData(id, change) {
+async function updateUserPostgressData(id, change) {
     return await pg.table('users').where('id', '=', id).update('naam', change)
+}
+
+async function updateGenderPostgressData(id, change) {
+    return await pg.table('sex_types').where('genderId', '=', id).update('gender', change)
 }
 
 // Delete a row inside the users table
