@@ -17,6 +17,11 @@ it('tests if recieving users data is succesfull', async () => {
     expect(response.statusCode).toEqual(200);
 });
 
+it('tests if recieving genders data is succesfull', async () => {
+    const response = await request(app).get('/api/genders');
+    expect(response.statusCode).toEqual(200);
+});
+
 it('tests if deleting data is succesfull', async () => {
     const response = await request(app).delete('/api/deleteUser/1');
     expect(response.statusCode).toEqual(200);

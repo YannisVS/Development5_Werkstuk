@@ -29,6 +29,12 @@ bgRouter.route('/users')
         });
     })
 
+bgRouter.route('/genders')
+    .get((req, res) => {
+        recieveSexPostgressData().then((data) => {
+            res.send("data recieved");
+        });
+    })
 
 //----------------------------------------------------
 
@@ -69,7 +75,6 @@ bgRouter.route('/createGender/:genderNaam')
     });
 
 //---------------------------------------------------
-
 
 function startexpress() {
     app.use('/api', bgRouter);
@@ -158,7 +163,7 @@ async function recieveUsersPostgressData() {
 }
 
 async function recieveSexPostgressData() {
-    return await pg.select('genderId').from('sex_types')
+    return await pg.select('genderId', 'gender').from('sex_types')
 }
 // Update a row inside the users table
 async function updatePostgressData(id, change) {
