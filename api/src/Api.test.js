@@ -22,15 +22,21 @@ it('tests if recieving genders data is succesfull', async () => {
     expect(response.statusCode).toEqual(200);
 });
 
-it('tests if deleting data is succesfull', async () => {
+it('tests if deleting user data is succesfull', async () => {
     const response = await request(app).delete('/api/deleteUser/1');
     expect(response.statusCode).toEqual(200);
 });
 
-it('tests if updating data is succesfull', async () => {
+it('tests if updating user data is succesfull', async () => {
     const response = await request(app).patch('/api/updateUser/3/testvalue');
     expect(response.statusCode).toEqual(200);
 });
+
+it('tests if updating gender data is succesfull', async () => {
+    const response = await request(app).patch('/api/updateGender/2/testvalue');
+    expect(response.statusCode).toEqual(200);
+});
+
 
 it('tests if creating user data is succesfull', async () => {
     const response = await request(app).post('/api/createUser/tesitfy/2');
