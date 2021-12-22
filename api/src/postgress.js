@@ -61,9 +61,16 @@ bgRouter.route('/updateGender/:id/:change')
 
 bgRouter.route('/deleteUser/:id')
     .delete((req, res) => {
-        deletePostgressData(req.params.id);
+        deleteUserPostgressData(req.params.id);
         res.send("data deleted")
     });
+
+bgRouter.route('/deleteGender/:id')
+    .delete((req, res) => {
+        deleteGenderPostgressData(req.params.id);
+        res.send("data deleted")
+    });
+
 
 //--------------------------------------------------
 
@@ -144,6 +151,9 @@ async function createDummySexTypeData() {
     await pg.table('sex_types').insert({
         gender: "female"
     })
+    await pg.table('sex_types').insert({
+        gender: "Anoniem"
+    })
 }
 
 //----------------------------------------
@@ -182,8 +192,12 @@ async function updateGenderPostgressData(id, change) {
 }
 
 // Delete a row inside the users table
-async function deletePostgressData(id) {
+async function deleteUserPostgressData(id) {
     return await pg.table('users').where('id', '=', id).del()
+}
+
+async function deleteGenderPostgressData(id) {
+    return await pg.table('sex_types').where('genderId', '=', id).del()
 }
 
 //exports variables to the test js file

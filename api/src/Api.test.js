@@ -27,6 +27,12 @@ it('tests if deleting user data is succesfull', async () => {
     expect(response.statusCode).toEqual(200);
 });
 
+it('tests if deleting Gender data is succesfull', async () => {
+    const response = await request(app).delete('/api/deleteGender/3');
+    expect(response.statusCode).toEqual(200);
+});
+
+
 it('tests if updating user data is succesfull', async () => {
     const response = await request(app).patch('/api/updateUser/3/testvalue');
     expect(response.statusCode).toEqual(200);
