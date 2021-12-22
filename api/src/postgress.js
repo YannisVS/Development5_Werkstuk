@@ -20,6 +20,8 @@ const pg = require('knex')({
 
 // This is Middleware
 
+//--------------------GET--------------------------
+
 bgRouter.route('/users')
     .get((req, res) => {
         recieveUsersPostgressData().then((data) => {
@@ -31,6 +33,12 @@ bgRouter.route('/users')
         res.send("data recieved");
     })
 
+
+//----------------------------------------------------
+
+
+//--------------------UPDATE--------------------------
+
 bgRouter.route('/updateUser/:id')
     .patch((req, res) => {
         try {
@@ -41,6 +49,11 @@ bgRouter.route('/updateUser/:id')
         }
     });
 
+//----------------------------------------------------
+
+
+//--------------------DELETE--------------------------
+
 bgRouter.route('/deleteUser/:id')
     .delete((req, res) => {
         try {
@@ -50,6 +63,33 @@ bgRouter.route('/deleteUser/:id')
             res.send(error)
         }
     });
+
+//--------------------------------------------------
+
+//--------------------POST--------------------------
+
+bgRouter.route('/createUser/:naam/:gender')
+    .post((req, res) => {
+        try {
+            createPostgressData(req.params.naam, req.params.gender);
+            res.send("data added")
+        } catch (error) {
+            res.send(error)
+        }
+    });
+
+bgRouter.route('/createGender/:genderNaam')
+    .post((req, res) => {
+        try {
+            createSexTypesPostgressData(req.params.genderNaam);
+            res.send("data added")
+        } catch (error) {
+            res.send(error)
+        }
+    });
+
+//---------------------------------------------------
+
 
 function startexpress() {
     app.use('/api', bgRouter);
@@ -89,27 +129,46 @@ async function createTables() {
         }
     });
     if (didAlreadyCreateTable) {
-        await createSexTypesPostgressData();
+        await createDummySexTypeData();
         for (let index = 0; index < 5; index++) {
-            createPostgressData();
+            createDummyData();
         }
     }
 }
 
-// Creates a row inside the users table
-async function createPostgressData() {
+// Creates dummy data -------------------
+
+async function createDummyData() {
     await pg.table('users').insert({
-        naam: "test",
+        naam: 'Jhon Doe',
         gender: 1
     })
 }
 
-async function createSexTypesPostgressData() {
+async function createDummySexTypeData() {
     await pg.table('sex_types').insert({
         gender: "male"
     })
     await pg.table('sex_types').insert({
         gender: "female"
+    })
+}
+
+//----------------------------------------
+
+
+// Creates a row inside the users table
+async function createPostgressData(naam, gender) {
+    await pg.table('users').insert({
+        naam: naam,
+        gender: gender
+    })
+}
+
+// Creates a row inside the sextype
+async function createSexTypesPostgressData(genderNaam) {
+    await pg.table('sex_types').insert({
+        gender: genderNaam
     })
 }
 
