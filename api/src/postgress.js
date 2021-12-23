@@ -1,5 +1,4 @@
 // Express
-// const supertest = require('supertest');
 const express = require('express');
 const app = express();
 const bgRouter = express.Router();
@@ -204,5 +203,3 @@ async function deleteGenderPostgressData(id) {
 module.exports = {
     app
 }
-
-// gen_random_uuid()
