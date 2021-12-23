@@ -2,8 +2,6 @@ const {
     app
 } = require("./postgress")
 
-const helpers = require("./helpers");
-
 const request = require('supertest');
 
 
