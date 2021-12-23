@@ -30,7 +30,7 @@ Routes:
 This route allows you to recieve all users from the postgress database
 http://localhost:5543/api/users
 
-1.2
+1.2 Get gender
 This route allows you to recieve all genders from the postgress database
 http://localhost:5543/api/genders
 
