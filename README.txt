@@ -7,7 +7,7 @@ Prerequisites:
 Recommendations:
 - This was made in visual studio code
 - Use TablePlus for an ideal way to visualize the database
-- Make us of postman or thunderclient to execute commands on the api Routes
+- Make use of postman or thunderclient to execute commands on the api Routes
 
 Terminal commands:
 Run "docker-compose up --build -d" to run the docker image
